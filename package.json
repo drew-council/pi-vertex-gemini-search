@@ -1,6 +1,6 @@
 {
   "name": "@bizmyth/pi-vertex-gemini-search",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Vertex AI Gemini grounded web search and research tools for Pi, using Pi's google-vertex provider",
   "type": "module",
   "license": "MIT",
