@@ -1,57 +1,60 @@
 {
-  "name": "@nilskluewer/pi-vertex-gemini-search",
-  "version": "0.1.1",
-  "description": "Vertex AI Gemini grounded web search and research tools for Pi, using Google Cloud Agent Platform credentials.",
+  "name": "@bizmyth/pi-vertex-gemini-search",
+  "version": "0.1.0",
+  "description": "Vertex AI Gemini grounded web search and research tools for Pi, using Pi's google-vertex provider",
   "type": "module",
+  "license": "MIT",
+  "author": "Drew Council",
+  "packageManager": "bun@1.4.2",
   "keywords": [
     "pi-package",
-    "pi",
-    "pi-coding-agent",
     "pi-extension",
-    "gcp",
-    "google-cloud",
-    "agent-platform",
+    "pi-coding-agent",
     "vertex-ai",
     "gemini",
+    "google-cloud",
     "web-search",
-    "search",
     "research",
     "grounding",
     "google-search"
   ],
-  "author": {
-    "name": "Nils Klüwer",
-    "url": "https://github.com/nilskluewer"
-  },
-  "license": "MIT",
   "files": [
-    "extensions",
+    "src",
     "README.md",
     "LICENSE"
   ],
+  "scripts": {
+    "check": "biome ci . && tsc -p tsconfig.json && bun test",
+    "check:fix": "biome check --write --unsafe . && tsc -p tsconfig.json && bun test",
+    "test": "bun test",
+    "prepublishOnly": "bun run check && npm pack --dry-run"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "pi": {
     "extensions": [
-      "./extensions/vertex-gemini-search.ts"
+      "./src/index.ts"
     ]
   },
   "peerDependencies": {
+    "@earendil-works/pi-ai": "1.0.4",
     "@earendil-works/pi-coding-agent": "*",
-    "@earendil-works/pi-tui": "*",
-    "typebox": "*"
+    "@earendil-works/pi-tui": "1.0.4",
+    "typebox": "1.3.27"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@earendil-works/pi-coding-agent": "1.0.4",
+    "@types/bun": "^1.4.2",
+    "typescript": "^7.0.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nilskluewer/pi-vertex-gemini-search.git"
+    "url": "git+https://github.com/drew-council/pi-vertex-gemini-search.git"
   },
   "bugs": {
-    "url": "https://github.com/nilskluewer/pi-vertex-gemini-search/issues"
+    "url": "https://github.com/drew-council/pi-vertex-gemini-search/issues"
   },
-  "homepage": "https://github.com/nilskluewer/pi-vertex-gemini-search#readme",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "scripts": {
-    "pack:dry": "npm pack --dry-run"
-  }
+  "homepage": "https://github.com/drew-council/pi-vertex-gemini-search#readme"
 }
